@@ -54,7 +54,9 @@
     }
   }
   .free-submenu {
-    display: none;
+    // opacity: 0;
+    // transition: opacity .5s ease-in;
+    // display: none;
     list-style:none;
     padding-left: 0;
     white-space: nowrap;
@@ -71,7 +73,8 @@
   }
 
   .free-submenu.menu-opened {
-    display: block;
+    // display: block;
+    // opacity: 1;
   }
 }
 
