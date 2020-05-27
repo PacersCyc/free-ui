@@ -53,7 +53,7 @@ export const AutoComplete: FC<AutoCompleteProps> = props => {
       setSuggestions([])
     }
     setHightlightIndex(-1)
-  }, [debouncedValue])
+  }, [debouncedValue, fetchSuggestions])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     let value = e.target.value.trim()
