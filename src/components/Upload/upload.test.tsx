@@ -4,15 +4,20 @@ import axios from 'axios'
 import { render, RenderResult, fireEvent, wait, createEvent } from '@testing-library/react'
 import { Upload, UploadProps } from './upload'
 
+interface FakeIconProps {
+  icon: string
+  onClick: (event: React.MouseEvent<HTMLSpanElement, MouseEvent>) => void
+}
+
 jest.mock('../Icon/icon', () => {
-  return ({ icon, onClick }) => {
+  return ({ icon, onClick }: FakeIconProps) => {
     return <span onClick={onClick}>{icon}</span>
   }
 })
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
-const testProps = {
+const testProps: UploadProps = {
   action: 'fakeurl.com',
   onSuccess: jest.fn(),
   onChange: jest.fn(),
@@ -32,8 +37,8 @@ let wrapper: RenderResult, fileInput: HTMLInputElement, uploadArea: HTMLElement
 describe('test upload Component', () => {
   beforeEach(() => {
     wrapper = render(<Upload {...testProps}>Click to upload</Upload>)
-    fileInput = wrapper.container.querySelector('.free-file-input')
-    uploadArea = wrapper.queryByText('Click to upload')
+    fileInput = wrapper.container.querySelector('.free-file-input') as HTMLInputElement
+    uploadArea = wrapper.queryByText('Click to upload') as HTMLElement
   })
 
   it('upload process should works fine', async () => {
@@ -53,7 +58,7 @@ describe('test upload Component', () => {
     expect(testProps.onChange).toHaveBeenCalledWith(testFile)
 
     expect(queryByText('times')).toBeInTheDocument()
-    fireEvent.click(queryByText('times'))
+    fireEvent.click(queryByText('times') as HTMLElement)
     expect(queryByText('test.png')).not.toBeInTheDocument()
     expect(testProps.onRemove).toHaveBeenCalledWith(expect.objectContaining({
       raw: testFile,
