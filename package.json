@@ -1,10 +1,28 @@
 {
-  "name": "free-ui",
-  "version": "0.1.0",
-  "private": true,
-  "main": "build/index.js",
-  "module": "build/index.js",
-  "types": "build/index.d.ts",
+  "name": "cyc-free-ui",
+  "version": "0.1.1",
+  "description": "react components library",
+  "author": {
+    "name": "cyc"
+  },
+  "private": false,
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "react"
+  ],
+  "homepage": "https://github.com/PacersCyc/free-ui/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/PacersCyc/free-ui/"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
@@ -33,9 +51,10 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public",
-    "clean": "rimraf ./build",
+    "clean": "rimraf ./dist",
     "build-ts": "tsc -p tsconfig.build.json",
-    "build-css": "node-sass ./src/styles/index.scss ./build/index.css"
+    "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
+    "prepublish": "yarn build"
   },
   "eslintConfig": {
     "extends": "react-app"
