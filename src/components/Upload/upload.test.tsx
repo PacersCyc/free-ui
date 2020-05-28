@@ -24,6 +24,8 @@ const testProps: UploadProps = {
   onRemove: jest.fn(),
   drag: true
 }
+
+let wrapper: RenderResult, fileInput: HTMLInputElement, uploadArea: HTMLElement
 const testFile = new File(
   ['xyz'],
   'test.png',
@@ -31,8 +33,6 @@ const testFile = new File(
     type: 'image/png'
   }
 )
-
-let wrapper: RenderResult, fileInput: HTMLInputElement, uploadArea: HTMLElement
 
 describe('test upload Component', () => {
   beforeEach(() => {
@@ -43,9 +43,10 @@ describe('test upload Component', () => {
 
   it('upload process should works fine', async () => {
     const { queryByText } = wrapper
-    mockedAxios.post.mockImplementation(() => {
-      return Promise.resolve({data: 'cool'})
-    })
+    // mockedAxios.post.mockImplementation(() => {
+    //   return Promise.resolve({data: 'cool'})
+    // })
+    mockedAxios.post.mockResolvedValue({'data': 'cool'})
     expect(uploadArea).toBeInTheDocument()
     expect(fileInput).not.toBeVisible()
     fireEvent.change(fileInput, { target: {files: [testFile]} })

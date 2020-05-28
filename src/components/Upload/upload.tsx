@@ -148,7 +148,6 @@ export const Upload: FC<UploadProps> = props => {
           }
         }
       }).then(resp => {
-        console.log(resp)
         updateFileList(_file, {
           status: 'success',
           response: resp.data
@@ -173,7 +172,6 @@ export const Upload: FC<UploadProps> = props => {
         }
       })
   }
-  console.log(fileList)
 
   return (
     <div 

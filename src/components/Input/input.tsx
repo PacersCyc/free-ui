@@ -33,7 +33,7 @@ export const Input: FC<InputProps> = props => {
     [`input-size-${size}`]: size,
     'is-disabled': disabled,
     'input-group': prepend || append,
-    'input-group-apped': !!append,
+    'input-group-append': !!append,
     'input-group-prepend': !!prepend
   })
 
