@@ -47,7 +47,7 @@
     "lint": "eslint --ext js,ts,tsx src",
     "build-ts": "tsc -p tsconfig.build.json",
     "build-css": "node-sass ./src/styles/index.scss ./dist/index.css",
-    "prepare": "yarn test:nowatch && yarn lint && yarn build"
+    "prepublishOnly": "yarn test:nowatch && yarn lint && yarn build"
   },
   "husky": {
     "hooks": {
